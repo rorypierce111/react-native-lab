@@ -8,6 +8,7 @@ type StudentCardProps = {
   count: number;
   onUpdate: (id: number, delta: number) => void;
   onRemove: (id: number) => void;
+  onEdit: (id: number) => void;
 };
 
 export default function StudentCard({
@@ -18,8 +19,8 @@ export default function StudentCard({
   count,
   onUpdate,
   onRemove,
+  onEdit,
 }: StudentCardProps) {
-
   return (
     <View style={{ marginBottom: 12, padding: 10, borderWidth: 1 }}>
       <Text style={{ fontSize: 18 }}>{name}</Text>
@@ -45,9 +46,12 @@ export default function StudentCard({
       </Text>
 
       <View style={{ marginTop: 5 }}>
-        <Button title="Remove" onPress={() => onRemove(id)} />
+        <Button title="Edit" onPress={() => onEdit(id)} />
       </View>
 
+      <View style={{ marginTop: 5 }}>
+        <Button title="Remove" onPress={() => onRemove(id)} />
+      </View>
     </View>
   );
 }
